@@ -1,0 +1,22 @@
+{
+  "name": "satelitenoticias_back",
+  "version": "1.0.0",
+  "description": "Backend de la plataforma web satelitenoticias",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Observatoriolab/SateliteNoticias_Back.git"
+  },
+  "keywords": [
+    "news"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Observatoriolab/SateliteNoticias_Back/issues"
+  },
+  "homepage": "https://github.com/Observatoriolab/SateliteNoticias_Back#readme"
+}
