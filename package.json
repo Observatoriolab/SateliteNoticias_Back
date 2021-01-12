@@ -27,6 +27,7 @@
   "homepage": "https://github.com/Observatoriolab/SateliteNoticias_Back#readme",
   "dependencies": {
     "cookie-parser": "^1.4.5",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-generator": "^4.16.1",
     "morgan": "^1.10.0"
