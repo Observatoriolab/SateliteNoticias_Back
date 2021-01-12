@@ -4,8 +4,7 @@
   "description": "Backend de la plataforma web satelitenoticias",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "prestart": "babel ./src --out-dir build",
+    "test": "nyc --reporter=html --reporter=text --reporter=lcov mocha -r @babel/register",    "prestart": "babel ./src --out-dir build",
     "start": "node ./build/bin/www",
     "startdev": "nodemon --exec babel-node ./src/bin/www",
     "lint": "./node_modules/.bin/eslint ./src",
@@ -40,10 +39,16 @@
     "@babel/preset-env": "^7.12.11",
     "@babel/register": "^7.12.10",
     "@babel/runtime": "^7.12.5",
+    "chai": "^4.2.0",
+    "coveralls": "^3.1.0",
     "eslint": "^7.17.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.22.1",
+    "mocha": "^8.2.1",
     "nodemon": "^2.0.7",
-    "prettier": "^2.2.1"
+    "nyc": "^15.1.0",
+    "prettier": "^2.2.1",
+    "sinon-chai": "^3.5.0",
+    "supertest": "^6.0.1"
   }
 }
