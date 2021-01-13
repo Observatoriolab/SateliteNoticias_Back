@@ -1,33 +1,39 @@
 language: node_js
 env:
   global:
-    - CC_TEST_REPORTER_ID=f1cafb0361927cb2a61ca1ca417ef8d4f450b18a5c286aed7ff1ae0ce0ab7e66
+  - CC_TEST_REPORTER_ID=f1cafb0361927cb2a61ca1ca417ef8d4f450b18a5c286aed7ff1ae0ce0ab7e66
 matrix:
   include:
   - node_js: '12'
 cache:
-  directories: [node_modules]
-install:
-  yarn
+  directories:
+  - node_modules
+install: yarn
 after_success: yarn coverage
 before_script:
-  - psql -c 'create database testdb;' -U postgres
-  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-  - chmod +x ./cc-test-reporter
-  - ./cc-test-reporter before-build
+- psql -c 'create database testdb;' -U postgres
+- curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64
+  > ./cc-test-reporter
+- chmod +x ./cc-test-reporter
+- "./cc-test-reporter before-build"
 script:
-  - yarn test
+- yarn test
 after_script:
-  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
-
+- "./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT"
 services:
-  - postgresql
+- postgresql
 addons:
-  postgresql: "10"
+  postgresql: '10'
   apt:
     packages:
     - postgresql-10
     - postgresql-client-10
 before_install:
-  - sudo cp /etc/postgresql/{9.6,10}/main/pg_hba.conf
-  - sudo /etc/init.d/postgresql restart
+- sudo cp /etc/postgresql/{9.6,10}/main/pg_hba.conf
+- sudo /etc/init.d/postgresql restart
+deploy:
+  provider: heroku
+  app:
+    master: satelitenoticias-back
+  api_key:
+    secure: biKgpJ+GXmxPYNlxBAhM4fnoKcFUZorrkpoxwOs5VNyUgjpbTvKQ435JONUmmw60bKUw0Zz05kwniOfkKNbKyYn4P7kDQA0O1YHc3EIoe8pbpRKrpU8L0eHZmGjglrkvgR1tDp76VTrz0mI0t21+6OicNoKMJvBMC2gmEJvVrUzN0Vs/YxlMQvoonmKHRWAdamfvreX4uHqMeyIinHMODnZDV8s9Ydb7O0OT+pZesb6WE9zjRIdJkRbTzlC/bhu2F8dTfad2ODDHiS5qx1Xsprx7D4Bf05Bod5CfzJZ3hYqrnfSRieunCQ3nLYaAjN/ScsfXnLvh065LCc4+oSjkvmYSX2uyxKLwzA/B1YGano20kpAEGg7/pPOy+08NBDCUunDRVkJuYkFFAEXxSZ7bwuERsMj/dTBB+7DVW86VpoY+J/Hi8Td17gwn8yrqK+aO8JUKH3jegnp0VDaCs8UHYsNsv8BhfFKjlm4EzNiwjr/04fsFeWMCOdY+ESVRcdq/vCubMQ8ybK4MahXmwUIhWNMy3Z3/jCHH7FUvfSTp2zZNrPcTXuKZX1WjUHVya+MM1Jzar9dDSmjl8aFP+8sP9nDQ2bBud20Zst5X4KAh9/svGkdpbHEGQX3GTpxtomnu4r+bcR2ehBHuIqsxOFXYpIv9Wc0+TYij5iCUvtDwLLU=
