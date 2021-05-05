@@ -12,6 +12,11 @@ class Model {
     if (clause) query += clause;
     return this.pool.query(query);
   }
+  async selectAll(clause) {
+    let query = `SELECT * FROM ${this.table}`;
+    if (clause) query += clause;
+    return this.pool.query(query);
+  }
   async insertWithReturn(columns, values) {
     const query = `
           INSERT INTO ${this.table}(${columns})
@@ -20,6 +25,29 @@ class Model {
       `;
     return this.pool.query(query);
   }
+  async update(columns, values, conditions) {
+    let single_column
+    let single_value
+    let query = `
+          UPDATE ${this.table}
+          SET `
+    for (let i = 0; i < columns.length; i++) {
+      single_column = columns[i];
+      single_value = values[i];
+      query+= `${single_column} = ${single_value}, `
+    }
+    query+= `WHERE ${conditions}`
+    return this.pool.query(query);
+  }
+  async delete(conditions) {
+    const query = `
+          DELETE FROM ${this.table}
+          WHERE ${conditions}
+          RETURNING *;
+      `;
+    return this.pool.query(query);
+  }
+
 }
 
 export default Model;
