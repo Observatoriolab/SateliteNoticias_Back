@@ -16,7 +16,7 @@ class Model {
     console.log(tableName)
     console.log(typeof(queryResult))
 
-    return result;
+    return queryResult;
   }
   async selectAll(clause) {
     let query = `SELECT * FROM ${this.table}`;
