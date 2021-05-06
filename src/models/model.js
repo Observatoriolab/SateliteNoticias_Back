@@ -10,7 +10,15 @@ class Model {
   async select(columns, clause) {
     let query = `SELECT ${columns} FROM ${this.table}`;
     if (clause) query += clause;
-    return this.pool.query(query);
+    let queryResult = this.pool.query(query)
+    let tableName = this.table
+    console.log(queryResult)
+    console.log(tableName)
+    console.log(queryResult[this.table].length)
+    console.log(queryResult[this.table])
+    let result = {length: queryResult[this.table].length, tableName: queryResult[this.table]}
+    console.log(result)
+    return result;
   }
   async selectAll(clause) {
     let query = `SELECT * FROM ${this.table}`;
