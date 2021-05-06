@@ -1,6 +1,3 @@
-const express = require('express');
-const edition = express.Router();
+import Model from '../models/model';
 
-
-
-export default edition;
+const editionModel = new Model('Edition');

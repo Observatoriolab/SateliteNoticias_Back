@@ -1,6 +1,4 @@
-const express = require('express');
-const comment = express.Router();
+import Model from '../models/model';
 
-
-
-export default comment;
+const editionComment = new Model('User_edition_comment');
+const newsComment = new Model('User_news_comment');

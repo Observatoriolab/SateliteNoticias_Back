@@ -1,6 +1,3 @@
-const express = require('express');
-const news = express.Router();
+import Model from '../models/model';
 
-
-
-export default news;
+const newsModel = new Model('News');
