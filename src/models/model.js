@@ -14,10 +14,8 @@ class Model {
     let tableName = this.table
     console.log(queryResult)
     console.log(tableName)
-    console.log(queryResult[this.table].length)
-    console.log(queryResult[this.table])
-    let result = {length: queryResult[this.table].length, tableName: queryResult[this.table]}
-    console.log(result)
+    console.log(typeof(queryResult))
+
     return result;
   }
   async selectAll(clause) {
