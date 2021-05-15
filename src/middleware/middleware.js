@@ -2,6 +2,8 @@ import axios from 'axios';
 const slug_chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
 const slug_len = 10
 export const modifyMessage = (req, res, next) => {
+    console.log(req.body)
+
     req.body.message = `SAYS: ${req.body.message}`;
     next();
   };
