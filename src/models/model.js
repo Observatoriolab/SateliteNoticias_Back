@@ -12,6 +12,7 @@ class Model {
     if (clause) query += clause;
     let queryResult = this.pool.query(query)
     let tableName = this.table
+    console.log("Normal select prints")
     console.log(queryResult)
     console.log(tableName)
     console.log(typeof(queryResult))
@@ -29,6 +30,15 @@ class Model {
           VALUES (${values})
           RETURNING id, ${columns}
       `;
+    console.log("Normal select prints")
+    console.log("columns")
+    console.log(columns)
+    console.log("values")
+    console.log(values)
+    console.log("table")
+    console.log(this.table)
+    console.log("the query:")
+    console.log(query)
     return this.pool.query(query);
   }
   async update(columns, values, conditions) {
