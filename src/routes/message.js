@@ -7,5 +7,4 @@ messageRouter.get('/', indexPage);
 messageRouter.get('/messages', messagesPage);
 messageRouter.post('/messages', modifyMessage, performAsyncAction, addMessage);
 
-export default messageRouter.get('/messages', messagesPage);
-;
+export default messageRouter
