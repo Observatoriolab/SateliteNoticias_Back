@@ -11,6 +11,7 @@ export const messagesPage = async (req, res) => {
   }
 };
 export const addMessage = async (req, res) => {
+  console.log(req.body)
   const { name, message } = req.body;
   const columns = 'name, message';
   const values = `'${name}', '${message}'`;
