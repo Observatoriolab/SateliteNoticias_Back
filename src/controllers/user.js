@@ -27,6 +27,8 @@ export const loginUser = async (req, res) => {
   try {
     const data = await userModel.select(columns, clause);
     console.log(data)
+    res.status(200).json({ messages: data.rows });
+
     /*
     if(data)
     {
