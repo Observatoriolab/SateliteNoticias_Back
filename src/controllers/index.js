@@ -4,3 +4,4 @@ export * from './messages';
 export * from './comment';
 export * from './edition';
 export * from './news';
+export * from './user';
