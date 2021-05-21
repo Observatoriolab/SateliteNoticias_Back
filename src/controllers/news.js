@@ -1,8 +1,23 @@
 import Model from '../models/model';
+import { getUpperAndLowerLimitNews} from '../middleware';
 
 const newsModel = new Model('News');
 const zero = 0
 const nullValue = null
+
+export const getBatchNews = async (req, res) => {
+  const {page, newsPerPage} = req.body;
+  try {
+    const data = await newsModel.selectAll(false);
+
+    //Sub-arreglo de noticias (json) dependiendo de la pagina y el numero de noticias por pagina a mostrar
+    let actualNews = getUpperAndLowerLimitNews(data,page,newsPerPage)
+
+    res.status(200).json({ news: actualNews });
+  } catch (err) {
+    res.status(200).json({ news: err.stack });
+  }
+};
 
 export const addPieceNews = async (req, res) => {
   const {title, content_summary, content_full, source, axis_primary, axis_secondary, 

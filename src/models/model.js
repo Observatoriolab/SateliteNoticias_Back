@@ -19,6 +19,7 @@ class Model {
 
     return queryResult;
   }
+  
   async selectAll(clause) {
     let query = `SELECT * FROM ${this.table}`;
     if (clause) query += clause;
