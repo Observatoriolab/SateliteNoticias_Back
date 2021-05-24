@@ -33,6 +33,48 @@ export const addRatingRelevance = (req, res, next) => {
 
   next();
 };
+
+export const getUpperAndLowerLimitNews = (data, page, newsPerPage) => {
+  let rows = data.rows; // [{id, title, content, axis....},{}, ....]
+  let totalRows = data.totalRows; // Ej 33 noticias
+  let newsPerPageAux = newsPerPage
+  let pageAux = page
+  let reminder = totalRows % newsPerPageAux
+  let numberOfPages = totalRows/newsPerPageAux
+
+  if(remainder !== 0) numberOfPages++
+  
+  let lowerLimit = (pag-1)* newsPerPageAux
+  var upperLimit;
+  if(numberOfPages === pageAux){
+    upperLimit = reminder + lowerLimit - 1
+  }
+  else{
+    upperLimit = lowerLimit + newsPerPageAux - 1
+  }
+
+  let newsBatchResult = rows.slice(lowerLimit,upperLimit)
+
+  return newsBatchResult
+};
+/*
+   
+
+    pag1
+    0-9
+
+    pag2
+    10-19
+
+    pag3
+    20-29
+
+    pag4
+    30-32
+
+  */
+
+
 export const addRatingIrrelevance = (req, res, next) => {
   let current_accum_irrelevance = req.body.rating_irrelevance_accum;
 

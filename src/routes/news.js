@@ -1,9 +1,12 @@
 import express from 'express';
-import {addPieceNews, putPieceNewsMetadata, putPieceNewsRelevance, putPieceNewsIrrelevance    } from '../controllers';
 import { createSlug, addRatingRelevance, addRatingIrrelevance,addAuthorCount } from '../middleware';
+
+import {addPieceNews, putPieceNewsMetadata, putPieceNewsRelevance, putPieceNewsIrrelevance,getBatchNews    } from '../controllers';
+
 
 const newsRouter = express.Router();
 
+newsRouter.get('/news', getBatchNews);
 
 newsRouter.post('/news', createSlug, addPieceNews);
 
