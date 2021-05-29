@@ -6,14 +6,17 @@ const zero = 0
 const nullValue = null
 
 export const addPieceNews = async (req, res) => {
-  const {title, content_summary, content_full, source, axis_primary, axis_secondary, 
-        country, created_at, date, slug} = req.body;
+  const {title, content, source, axis_primary, axis_secondary, 
+        country, date, slug} = req.body;
   
-  const columns = 'title, content_summary, content_full, source, axis_primary, axis_secondary, country, bibliography, rating_relevance, rating_relevance_accum, rating_irrelevance, rating_irrelevance_accum, authors, author_count, created_at, date, voter_count_relevance, voter_count_irrelevance, slug';
-  const values = `'${title}', '${content_summary}', '${content_summary}', '${content_full}', '${source}'
-                '${axis_primary}', '${axis_secondary}', '${country}', '${nullValue}','${zero}'
-                '${zero}', '${zero}', '${zero}', '', '${zero}',
-                '${created_at}', '${date}', '${zero}','${zero}', '${slug}'`;
+  const timeElapsed = Date.now();
+  const today = new Date(timeElapsed);
+  const created_at = today.toLocaleDateString(); // "6/14/2020"
+  const columns = 'title, content_summary, source, axis_primary, axis_secondary, country, bibliography, rating_relevance, rating_relevance_accum, rating_irrelevance, rating_irrelevance_accum, authors, author_count, created_at, date, voter_count_relevance, voter_count_irrelevance, slug';
+  const values = `'${title}', '${content}','${source}'
+            '${axis_primary}', '${axis_secondary}', '${country}', '${nullValue}','${zero}'
+            '${zero}', '${zero}', '${zero}', '${nullValue}', '${zero}',
+            '${created_at}', '${date}', '${zero}','${zero}', '${slug}'`;
   try {
     const data = await newsModel.insertWithReturn(columns, values);
     res.status(200).json({ messages: data.rows });
