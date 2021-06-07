@@ -8,6 +8,8 @@ export const modifyMessage = (req, res, next) => {
     next();
   };
 export const createSlug = (req, res, next) => {
+  console.log("11: Middleware")
+  console.log(req.body)
   var randomString = '';
   for (var i = 0; i < slug_len; i++) {
     var randomPoz = Math.floor(Math.random() * slug_chars.length);

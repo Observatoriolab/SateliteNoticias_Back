@@ -6,9 +6,12 @@ const zero = 0
 const nullValue = null
 
 export const addPieceNews = async (req, res) => {
+  console.log("9: addPieceNews")
+
   const {title, content, fullContent, source, axis_primary, axis_secondary, 
         country, date, slug} = req.body;
-        console.log(req.body)
+  
+  console.log(req.body)
   
   const timeElapsed = Date.now();
   const today = new Date(timeElapsed);
