@@ -12,8 +12,13 @@ export const createSlug = (req, res, next) => {
   console.log(req.body)
   var randomString = '';
   for (var i = 0; i < slug_len; i++) {
+    console.log(slug_len)
+    console.log(slug_chars)
+
     var randomPoz = Math.floor(Math.random() * slug_chars.length);
     randomString += charSet.substring(randomPoz,randomPoz+1);
+    console.log(randomPoz)
+    console.log(randomString)
   }
   console.log('18: Slug creado')
   console.log(randomString)
