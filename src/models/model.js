@@ -28,7 +28,7 @@ class Model {
     const query = `
           INSERT INTO ${this.table}(${columns})
           VALUES (${values})
-          RETURNING id, ${columns}
+          RETURNING ${columns}
       `;
     console.log("Normal select prints")
     console.log("columns")
