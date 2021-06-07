@@ -4,6 +4,8 @@ class Model {
   constructor(table) {
     this.pool = pool;
     this.table = table;
+    //Probar si funciona
+    this.id = "id_"+table.toLowerCase();
     this.pool.on('error', (err, client) => `Error, ${err}, on idle client${client}`);
   }
 
@@ -28,7 +30,7 @@ class Model {
     const query = `
           INSERT INTO ${this.table}(${columns})
           VALUES (${values})
-          RETURNING ${columns}
+          RETURNING ${this.id},${columns}
       `;
     console.log("Normal select prints")
     console.log("columns")
