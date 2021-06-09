@@ -28,7 +28,7 @@ class Model {
   }
   async insertWithReturn(columns, values) {
     const query = `
-          INSERT INTO ${this.table}(${columns})
+          INSERT INTO "${this.table}"(${columns})
           VALUES (${values})
           RETURNING ${this.id},${columns}
       `;

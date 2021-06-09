@@ -4,7 +4,7 @@ const userModel = new Model('User');
 
 export const addNewUser = async (req, res) => {
   console.log("/controller/user.js 6:", req.body)
-  const {name, password, email, created_at} = req.body;
+  const {name, password, email} = req.body;
   const timeElapsed = Date.now();
   const today = new Date(timeElapsed);
   const created_at = today.toLocaleDateString(); // "6/14/2020"
