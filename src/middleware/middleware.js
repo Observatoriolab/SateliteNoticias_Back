@@ -43,6 +43,7 @@ export const addRatingRelevance = (req, res, next) => {
 };
 
 export const getUpperAndLowerLimitNews = (data, page, newsPerPage) => {
+  //Verificar paginacion
   let rows = data.rows; // [{id, title, content, axis....},{}, ....]
   let totalRows = data.totalRows; // Ej 33 noticias
   let newsPerPageAux = newsPerPage

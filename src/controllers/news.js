@@ -1,5 +1,6 @@
 import Model from '../models/model';
 import { getUpperAndLowerLimitNews} from '../middleware';
+var hstore = require('pg-hstore')();
 
 const newsModel = new Model('News');
 const zero = 0
@@ -12,7 +13,12 @@ export const addPieceNews = async (req, res) => {
         country, date, slug} = req.body;
   
   console.log(req.body)
-  
+  // string.replace()-> title
+  title = title.replace(/['‘]+/g, '')
+  title = title.replace(/['’]+/g, '')
+  content= content.replace(/['‘]+/g, '')
+  content= content.replace(/['’]+/g, '')
+
   const timeElapsed = Date.now();
   const today = new Date(timeElapsed);
   const created_at = today.toLocaleDateString(); // "6/14/2020"
@@ -33,9 +39,9 @@ export const putPieceNewsRelevance = async (req, res) => {
     const {rating_relevance, rating_relevance_accum, voter_count_relevance} = req.body;    
     const {slug} = req.body;    
     const columns = 'rating_relevance, rating_relevance_accum, voter_count_relevance';
-    const values = `'${rating_relevance}', '${rating_relevance_accum}', '${voter_count_relevance}'`;
+    const values = `${rating_relevance}, ${rating_relevance_accum}, ${voter_count_relevance}`;
     
-    const conditions = `WHERE slug = ${slug}`
+    const conditions = `WHERE slug = '${slug}'`
     try {
       const data = await newsModel.update(columns, values, conditions);
       res.status(200).json({ messages: data.rows });
@@ -47,9 +53,9 @@ export const putPieceNewsIrrelevance = async (req, res) => {
     const {rating_irrelevance, rating_irrelevance_accum, voter_count_irrelevance} = req.body;    
     const {slug} = req.body;    
     const columns = 'rating_irrelevance, rating_irrelevance_accum, voter_count_irrelevance';
-    const values = `'${rating_irrelevance}', '${rating_irrelevance_accum}', '${voter_count_irrelevance}'`;
+    const values = `${rating_irrelevance}, ${rating_irrelevance_accum}, ${voter_count_irrelevance}`;
     
-    const conditions = `WHERE slug = ${slug}`
+    const conditions = `WHERE slug = '${slug}'`
     try {
       const data = await newsModel.update(columns, values, conditions);
       res.status(200).json({ messages: data.rows });
@@ -62,9 +68,9 @@ export const putPieceNewsMetadata = async (req, res) => {
     const {bibliography, authors, author_count, tags} = req.body;    
     const {slug} = req.body;    
     const columns = 'bibliography, authors, author_count, tags';
-    const values = `'${bibliography}', '${authors}', '${author_count}', '${tags}'`;
+    const values = `${bibliography}, ${authors}, ${author_count}, ${tags}`;
     
-    const conditions = `WHERE slug = ${slug}`
+    const conditions = `WHERE slug = '${slug}'`
     try {
       const data = await newsModel.update(columns, values, conditions);
       res.status(200).json({ messages: data.rows });

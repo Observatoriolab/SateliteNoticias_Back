@@ -44,6 +44,7 @@ class Model {
     return this.pool.query(query);
   }
   async update(columns, values, conditions) {
+    //Verificar que funcione
     let single_column
     let single_value
     let query = `
