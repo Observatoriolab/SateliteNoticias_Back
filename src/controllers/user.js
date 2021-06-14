@@ -29,12 +29,14 @@ export const loginUser = async (req, res) => {
     console.log("linea 29 user.js controller")
     console.log(data)
   
-    if(data)
+    if(data.rowCount===1)
     {
+      console.log("linea 34 user.js controller usuario ingresado correctamente ", email )
       res.status(200).json({ confirmation: true });
 
     }
     else{
+      console.log("linea 34 user.js controller usuario ingresado incorrectamente ", email )
       res.status(400).json({ confirmation: false });
 
     }
