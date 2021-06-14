@@ -27,8 +27,9 @@ class Model {
     return this.pool.query(query);
   }
   async insertWithReturn(columns, values) {
+    console.log("insertWithReturn: linea 30")
     const query = `
-          INSERT INTO "${this.table}"(${columns})
+          INSERT INTO "${this.table}"(${columns})s
           VALUES (${values})
           RETURNING ${this.id},${columns}
       `;
