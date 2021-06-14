@@ -23,7 +23,7 @@ export const loginUser = async (req, res) => {
   const { password, email} = req.body;
   const columns = 'password, email';
 
-  let clause = `WHERE email = '${email}' AND password = '${password}'`
+  let clause = ` WHERE email = '${email}' AND password = '${password}'`
   try {
     const data = await userModel.select(columns, clause);
     console.log("linea 29 user.js controller")
