@@ -31,7 +31,9 @@ export const addPieceNews = async (req, res) => {
     const data = await newsModel.insertWithReturn(columns, values);
     res.status(200).json({ messages: data.rows });
   } catch (err) {
-    res.status(200).json({ messages: err.stack });
+    console.log("linea 34")
+    console.log(err)
+    res.status(400).json({ messages: err.stack });
   }
 };
 
