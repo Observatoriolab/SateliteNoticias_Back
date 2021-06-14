@@ -50,7 +50,7 @@ export const getUpperAndLowerLimitNews = (data, page, newsPerPage) => {
   let newsPerPageAux = newsPerPage
   let pageAux = page
   let reminder = totalRows % newsPerPageAux
-  let numberOfPages = totalRows/newsPerPageAux
+  let numberOfPages = Math.floor(totalRows/newsPerPageAux)
   console.log("variables iniciales: ")
   console.log(newsPerPageAux)
   console.log(pageAux)
