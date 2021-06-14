@@ -69,11 +69,11 @@ export const getUpperAndLowerLimitNews = (data, page, newsPerPage) => {
   console.log("pagina actual: ", pageAux)
 
   if(reminder !== 0){
-    upperLimit = reminder + lowerLimit - 1
+    upperLimit = reminder + lowerLimit
     console.log("linea 72 ",upperLimit)
   }
   else{
-    upperLimit = lowerLimit + newsPerPageAux - 1
+    upperLimit = lowerLimit + newsPerPageAux
     console.log("linea 77 ", upperLimit)
   }
 
