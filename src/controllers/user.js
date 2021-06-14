@@ -20,25 +20,25 @@ export const addNewUser = async (req, res) => {
 };
 
 export const loginUser = async (req, res) => {
-  const {name, password, email} = req.body;
-  const columns = 'name, password, email';
+  const { password, email} = req.body;
+  const columns = 'password, email';
 
-  let clause = `WHERE name = '${name}' AND email = '${email}' AND password = '${password}'`
+  let clause = `WHERE email = '${email}' AND password = '${password}'`
   try {
     const data = await userModel.select(columns, clause);
+    console.log("linea 29 user.js controller")
     console.log(data)
-    res.status(200).json({messages: data.rows});
-    /*
+  
     if(data)
     {
-      //res.status(200).json({ confirmation: true });
+      res.status(200).json({ confirmation: true });
 
     }
     else{
-      //res.status(400).json({ confirmation: false });
+      res.status(400).json({ confirmation: false });
 
     }
-    */
+
   } catch (err) {
     res.status(200).json({ messages: err.stack });
   }
