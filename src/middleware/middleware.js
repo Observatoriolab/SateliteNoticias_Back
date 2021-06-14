@@ -46,7 +46,7 @@ export const getUpperAndLowerLimitNews = (data, page, newsPerPage) => {
   //Verificar paginacion
   console.log("linea 48 getUpperAndLowerLimit funcion ")
   let rows = data.rows; // [{id, title, content, axis....},{}, ....]
-  let totalRows = data.rowsCount; // Ej 33 noticias
+  let totalRows = data.rowCount; // Ej 33 noticias
   let newsPerPageAux = newsPerPage
   let pageAux = page
   let reminder = totalRows % newsPerPageAux
