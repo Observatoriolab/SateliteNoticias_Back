@@ -44,25 +44,43 @@ export const addRatingRelevance = (req, res, next) => {
 
 export const getUpperAndLowerLimitNews = (data, page, newsPerPage) => {
   //Verificar paginacion
+  console.log("linea 48 getUpperAndLowerLimit funcion ")
   let rows = data.rows; // [{id, title, content, axis....},{}, ....]
   let totalRows = data.totalRows; // Ej 33 noticias
   let newsPerPageAux = newsPerPage
   let pageAux = page
   let reminder = totalRows % newsPerPageAux
   let numberOfPages = totalRows/newsPerPageAux
+  console.log("variables iniciales: ")
+  console.log(data)
+  console.log(newsPerPageAux)
+  console.log(pageAux)
+  console.log(reminder)
+  console.log(numberOfPages)
+
 
   if(remainder !== 0) numberOfPages++
   
   let lowerLimit = (pag-1)* newsPerPageAux
+  console.log("Linea 65 news.js controller")
+  console.log(lowerLimit)
   var upperLimit;
+  console.log("numero de pagina: ", numberOfPages)
+  console.log("pagina actual: ", pageAux)
+
   if(numberOfPages === pageAux){
     upperLimit = reminder + lowerLimit - 1
+    console.log(upperLimit)
   }
   else{
     upperLimit = lowerLimit + newsPerPageAux - 1
+    console.log("linea 77 ", upperLimit)
   }
 
   let newsBatchResult = rows.slice(lowerLimit,upperLimit)
+  console.log("Linea 81 ", newsBatchResult)
+  console.log(lowerLimit)
+  console.log(upperLimit)
 
   return newsBatchResult
 };

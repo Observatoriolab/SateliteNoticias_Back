@@ -6,9 +6,9 @@ import {addPieceNews, putPieceNewsMetadata, putPieceNewsRelevance, putPieceNewsI
 
 const newsRouter = express.Router();
 
-newsRouter.get('/news', getBatchNews);
+newsRouter.post('/get_news', getBatchNews);
 
-newsRouter.post('/news', createSlug, addPieceNews);
+newsRouter.post('/create_news', createSlug, addPieceNews);
 
 
 newsRouter.put('/news_rating_relevance', addRatingRelevance, putPieceNewsRelevance);
