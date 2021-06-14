@@ -36,7 +36,7 @@ export const loginUser = async (req, res) => {
 
     }
     else{
-      console.log("linea 34 user.js controller usuario ingresado incorrectamente ", email )
+      console.log("linea 39 user.js controller usuario ingresado incorrectamente ", email )
       res.status(400).json({ confirmation: false });
 
     }
