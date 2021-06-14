@@ -10,8 +10,10 @@ class Model {
   }
 
   async select(columns, clause) {
-    let query = `SELECT ${columns} FROM ${this.table}`;
+    let query = `SELECT ${columns} FROM public."${this.table}"`;
     if (clause) query += clause;
+    console.log("linea 15 model.js models")
+    console.log(query)
     let queryResult = this.pool.query(query)
     let tableName = this.table
     console.log("Normal select prints")
