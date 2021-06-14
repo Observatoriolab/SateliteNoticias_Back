@@ -60,7 +60,7 @@ export const getUpperAndLowerLimitNews = (data, page, newsPerPage) => {
 
   if(remainder !== 0) numberOfPages++
   
-  let lowerLimit = (pag-1)* newsPerPageAux
+  let lowerLimit = (pageAux-1)* newsPerPageAux
   console.log("Linea 65 news.js controller")
   console.log(lowerLimit)
   var upperLimit;
@@ -69,7 +69,7 @@ export const getUpperAndLowerLimitNews = (data, page, newsPerPage) => {
 
   if(numberOfPages === pageAux){
     upperLimit = reminder + lowerLimit - 1
-    console.log(upperLimit)
+    console.log("linea 72 ",upperLimit)
   }
   else{
     upperLimit = lowerLimit + newsPerPageAux - 1
