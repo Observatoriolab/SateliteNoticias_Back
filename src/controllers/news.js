@@ -9,7 +9,7 @@ const nullValue = null
 export const addPieceNews = async (req, res) => {
   console.log("9: addPieceNews")
 
-  const {title, content, fullContent, source, axis_primary, axis_secondary, 
+  let {title, content, fullContent, source, axis_primary, axis_secondary, 
         country, date, slug} = req.body;
   
   console.log(req.body)
