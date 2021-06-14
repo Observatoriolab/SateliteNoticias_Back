@@ -29,7 +29,7 @@ class Model {
   async insertWithReturn(columns, values) {
     console.log("insertWithReturn: linea 30")
     const query = `
-          INSERT INTO "${this.table}"(${columns})s
+          INSERT INTO public."${this.table}" (${columns})
           VALUES (${values})
           RETURNING ${this.id},${columns}
       `;
