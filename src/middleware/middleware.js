@@ -58,7 +58,7 @@ export const getUpperAndLowerLimitNews = (data, page, newsPerPage) => {
   console.log(numberOfPages)
 
 
-  if(remainder !== 0) numberOfPages++
+  //if(remainder !== 0) numberOfPages++
   console.log("probando linea 62")
   
   let lowerLimit = (pageAux-1)* newsPerPageAux
