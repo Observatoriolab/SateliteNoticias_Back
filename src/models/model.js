@@ -24,7 +24,7 @@ class Model {
     return queryResult;
   }
   async selectAll(clause) {
-    let query = `SELECT * FROM ${this.table}`;
+    let query = `SELECT * FROM public."${this.table}"`;
     if (clause) query += clause;
     return this.pool.query(query);
   }
