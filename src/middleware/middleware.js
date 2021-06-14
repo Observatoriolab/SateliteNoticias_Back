@@ -59,6 +59,7 @@ export const getUpperAndLowerLimitNews = (data, page, newsPerPage) => {
 
 
   if(remainder !== 0) numberOfPages++
+  console.log("probando linea 62")
   
   let lowerLimit = (pageAux-1)* newsPerPageAux
   console.log("Linea 65 news.js controller")
