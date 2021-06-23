@@ -23,7 +23,7 @@ export const addPieceNews = async (req, res) => {
   const today = new Date(timeElapsed);
   const created_at = today.toLocaleDateString(); // "6/14/2020"
   const columns = 'title, content_summary, link, source, axis_primary, axis_secondary, country, bibliography, rating_relevance, rating_relevance_accum, rating_irrelevance, rating_irrelevance_accum, authors, author_count, created_at, date, voter_count_relevance, voter_count_irrelevance, slug';
-  const values = `'${title}', '${content}','${link}', '${source}',
+  const values = `'${title}', '${content_summary}','${link}', '${source}',
             '${axis_primary}', '${axis_secondary}', '${country}', ${nullValue},${zero},
             ${zero}, ${zero}, ${zero}, ${nullValue}, ${zero},
             '${created_at}', '${date}', ${zero},${zero}, '${slug}'`;
