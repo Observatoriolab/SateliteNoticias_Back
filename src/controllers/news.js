@@ -10,7 +10,7 @@ export const addPieceNews = async (req, res) => {
   console.log("9: addPieceNews")
 
   let {title, content_summary, link, source, axis_primary, axis_secondary, 
-        country, date, slug} = req.body;
+        country, date, slug, type} = req.body;
   
   console.log(req.body)
   // string.replace()-> title
@@ -22,11 +22,11 @@ export const addPieceNews = async (req, res) => {
   const timeElapsed = Date.now();
   const today = new Date(timeElapsed);
   const created_at = today.toLocaleDateString(); // "6/14/2020"
-  const columns = 'title, content_summary, link, source, axis_primary, axis_secondary, country, bibliography, rating_relevance, rating_relevance_accum, rating_irrelevance, rating_irrelevance_accum, authors, author_count, created_at, date, voter_count_relevance, voter_count_irrelevance, slug';
+  const columns = 'title, content_summary, link, source, axis_primary, axis_secondary, country, bibliography, rating_relevance, rating_relevance_accum, rating_irrelevance, rating_irrelevance_accum, authors, author_count, created_at, date, voter_count_relevance, voter_count_irrelevance, slug, type';
   const values = `'${title}', '${content_summary}','${link}', '${source}',
             '${axis_primary}', '${axis_secondary}', '${country}', ${nullValue},${zero},
             ${zero}, ${zero}, ${zero}, ${nullValue}, ${zero},
-            '${created_at}', '${date}', ${zero},${zero}, '${slug}'`;
+            '${created_at}', '${date}', ${zero},${zero}, '${slug}', '${type}'`;
   try {
     const data = await newsModel.insertWithReturn(columns, values);
     res.status(200).json({ messages: data.rows });
