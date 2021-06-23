@@ -9,21 +9,21 @@ const nullValue = null
 export const addPieceNews = async (req, res) => {
   console.log("9: addPieceNews")
 
-  let {title, content, fullContent, source, axis_primary, axis_secondary, 
+  let {title, content_summary, link, source, axis_primary, axis_secondary, 
         country, date, slug} = req.body;
   
   console.log(req.body)
   // string.replace()-> title
   title = title.replace(/['‘]+/g, '')
   title = title.replace(/['’]+/g, '')
-  content= content.replace(/['‘]+/g, '')
-  content= content.replace(/['’]+/g, '')
+  content_summary= content_summary.replace(/['‘]+/g, '')
+  content_summary= content_summary.replace(/['’]+/g, '')
 
   const timeElapsed = Date.now();
   const today = new Date(timeElapsed);
   const created_at = today.toLocaleDateString(); // "6/14/2020"
   const columns = 'title, content_summary, link, source, axis_primary, axis_secondary, country, bibliography, rating_relevance, rating_relevance_accum, rating_irrelevance, rating_irrelevance_accum, authors, author_count, created_at, date, voter_count_relevance, voter_count_irrelevance, slug';
-  const values = `'${title}', '${content}','${fullContent}', '${source}',
+  const values = `'${title}', '${content}','${link}', '${source}',
             '${axis_primary}', '${axis_secondary}', '${country}', ${nullValue},${zero},
             ${zero}, ${zero}, ${zero}, ${nullValue}, ${zero},
             '${created_at}', '${date}', ${zero},${zero}, '${slug}'`;
