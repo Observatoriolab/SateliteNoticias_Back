@@ -28,6 +28,8 @@ export const loginUser = async (req, res) => {
     const data = await userModel.select(columns, clause);
     console.log("linea 29 user.js controller")
     console.log(data)
+    console.log(data.rows)
+    console.log(data.rows[0])
   
     if(data.rowCount===1)
     {
