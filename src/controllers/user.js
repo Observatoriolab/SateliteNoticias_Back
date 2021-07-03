@@ -21,7 +21,7 @@ export const addNewUser = async (req, res) => {
 
 export const loginUser = async (req, res) => {
   const { password, email} = req.body;
-  const columns = 'password, email';
+  const columns = 'name, password, email';
 
   let clause = ` WHERE email = '${email}' AND password = '${password}'`
   try {
@@ -32,7 +32,7 @@ export const loginUser = async (req, res) => {
     if(data.rowCount===1)
     {
       console.log("linea 34 user.js controller usuario ingresado correctamente ", email )
-      res.status(200).json({ confirmation: true });
+      res.status(200).json({ confirmation: true, username: data.rows[0].name});
 
     }
     else{
