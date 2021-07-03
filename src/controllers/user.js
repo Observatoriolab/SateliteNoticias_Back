@@ -20,6 +20,8 @@ export const addNewUser = async (req, res) => {
 };
 
 export const loginUser = async (req, res) => {
+  console.log('body del login user')
+  console.log(req.body)
   const { password, email} = req.body;
   const columns = 'name, password, email';
 
