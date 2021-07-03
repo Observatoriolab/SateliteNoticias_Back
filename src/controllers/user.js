@@ -27,8 +27,11 @@ export const loginUser = async (req, res) => {
   try {
     const data = await userModel.select(columns, clause);
     console.log("linea 29 user.js controller")
+    console.log("-> Esta es la data")
     console.log(data)
+    console.log("-> Esta es la data.rows")
     console.log(data.rows)
+    console.log("-> Esta es la data.rows[0")
     console.log(data.rows[0])
   
     if(data.rowCount===1)
