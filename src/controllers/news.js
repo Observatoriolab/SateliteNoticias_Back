@@ -91,7 +91,9 @@ export const getBatchNews = async (req, res) => {
     const data = await newsModel.select('*',whereClause);
 
     //Sub-arreglo de noticias (json) dependiendo de la pagina y el numero de noticias por pagina a mostrar
-    let {actualNews,nextPage} = getUpperAndLowerLimitNews(data,page,newsPerPage)
+    let result = getUpperAndLowerLimitNews(data,page,newsPerPage)
+    let actualNews = result[0]
+    let nextPage = result[1]
     console.log("Linea 93 news.js controller")
     console.log(actualNews, nextPage)
     res.status(200).json({ news: actualNews, next: nextPage });

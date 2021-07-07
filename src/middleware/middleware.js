@@ -85,7 +85,7 @@ export const getUpperAndLowerLimitNews = (data, page, newsPerPage) => {
   console.log(lowerLimit)
   console.log(upperLimit)
 
-  return newsBatchResult,nextPage
+  return [newsBatchResult,nextPage]
 };
 /*
    
