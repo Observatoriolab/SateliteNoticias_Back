@@ -82,17 +82,19 @@ export const putPieceNewsMetadata = async (req, res) => {
 };
 
 export const getBatchNews = async (req, res) => {
-  const {page, newsPerPage} = req.body;
+  const {type,newsPerPage} = req.body;
+  const {page} = req.params;
   console.log("Linea 86 news.js controller")
   console.log(req.body)
+  const whereClause = `WHERE type = '${type}'`
   try {
-    const data = await newsModel.selectAll(false);
+    const data = await newsModel.select('*',whereClause);
 
     //Sub-arreglo de noticias (json) dependiendo de la pagina y el numero de noticias por pagina a mostrar
-    let actualNews = getUpperAndLowerLimitNews(data,page,newsPerPage)
+    let {actualNews,nextPage} = getUpperAndLowerLimitNews(data,page,newsPerPage)
     console.log("Linea 93 news.js controller")
-    console.log(actualNews)
-    res.status(200).json({ news: actualNews });
+    console.log(actualNews, nextPage)
+    res.status(200).json({ news: actualNews, next: nextPage });
   } catch (err) {
     res.status(200).json({ news: err.stack });
   }
