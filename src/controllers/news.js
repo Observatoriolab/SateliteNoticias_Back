@@ -83,7 +83,7 @@ export const putPieceNewsMetadata = async (req, res) => {
 
 export const getBatchNews = async (req, res) => {
   const {type,newsPerPage} = req.body;
-  const {page} = req.params;
+  const {page} = parseInt(req.params);
   console.log("Linea 86 news.js controller")
   console.log(req.body)
   const whereClause = ` WHERE type = '${type}'`
