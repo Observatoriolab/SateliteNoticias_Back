@@ -13,9 +13,9 @@ export const addNewUser = async (req, res) => {
   const values = `'${name}', '${password}', '${email}', '${created_at}'`;
 
   try{
-    const columns = 'email'
-    let clause = ` WHERE email = '${email}'`
-    const data = await userModel.select(columns,clause)
+    const columns2 = 'email'
+    let clause2 = ` WHERE email = '${email}'`
+    const data = await userModel.select(columns2,clause2)
 
     if (data.rows.length === 0){
       try {
