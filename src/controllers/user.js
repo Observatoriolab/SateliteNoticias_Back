@@ -11,12 +11,28 @@ export const addNewUser = async (req, res) => {
 
   const columns = 'name, password, email, created_at';
   const values = `'${name}', '${password}', '${email}', '${created_at}'`;
-  try {
-    const data = await userModel.insertWithReturn(columns, values);
-    res.status(200).json({ messages: data.rows });
-  } catch (err) {
-    res.status(200).json({ messages: err.stack });
+
+  try{
+    const columns = 'email'
+    let clause = ` WHERE email = '${email}'`
+    const data = await userModel.select(columns,clause)
+
+    if (data.rows.length === 0){
+      try {
+        const data = await userModel.insertWithReturn(columns, values);
+        res.status(200).json({ messages: data.rows });
+      } catch (err) {
+        res.status(200).json({ messages: err.stack });
+      }
+    }
+    else {
+      res.status(400)
+    }
   }
+  catch(err){
+    res.status(200).json({ messages: err.stack });  
+  }
+  
 };
 
 export const loginUser = async (req, res) => {
