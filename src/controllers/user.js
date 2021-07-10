@@ -16,21 +16,26 @@ export const addNewUser = async (req, res) => {
     const columns2 = 'email'
     let clause2 = ` WHERE email = '${email}'`
     const data = await userModel.select(columns2,clause2)
+    console.log("Linea 19: Existe duplicado ?: ", data)
 
     if (data.rows.length === 0){
       try {
         const data = await userModel.insertWithReturn(columns, values);
         res.status(200).json({ messages: data.rows });
+        console.log("Linea 25: Se guardo?: ", data)
       } catch (err) {
         res.status(200).json({ messages: err.stack });
+        console.log("Linea 28: Error al guardar usuario")
       }
     }
     else {
       res.status(400)
+      console.log("Linea 33: Encontro un duplicado?", data.rows.length )
     }
   }
   catch(err){
     res.status(200).json({ messages: err.stack });  
+    console.log("Linea 38: No se que paso")
   }
   
 };
