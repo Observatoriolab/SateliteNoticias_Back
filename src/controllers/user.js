@@ -21,20 +21,20 @@ export const addNewUser = async (req, res) => {
     if (data.rows.length === 0){
       try {
         const data = await userModel.insertWithReturn(columns, values);
-        res.status(200).json({ messages: data.rows });
+        res.status(200).json({ messages: data.rows, confirmation:false});
         console.log("Linea 25: Se guardo?: ", data)
       } catch (err) {
-        res.status(200).json({ messages: err.stack });
+        res.status(400).json({ messages: err.stack , confirmation: true});
         console.log("Linea 28: Error al guardar usuario")
       }
     }
     else {
-      res.status(400)
+      res.status(200).json({confirmation: true})
       console.log("Linea 33: Encontro un duplicado?", data.rows.length )
     }
   }
   catch(err){
-    res.status(200).json({ messages: err.stack });  
+    res.status(400).json({ messages: err.stack, confirmation: true });  
     console.log("Linea 38: No se que paso")
   }
   
