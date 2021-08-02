@@ -86,7 +86,7 @@ export const getBatchNews = async (req, res) => {
   const {page} = req.params;
   console.log("Linea 86 news.js controller")
   console.log(req.body)
-  const whereClause = ` WHERE type = '${type}'`
+  const whereClause = ` WHERE type = '${type}' order by created_at DESC`
   try {
     const data = await newsModel.select('*',whereClause);
 
